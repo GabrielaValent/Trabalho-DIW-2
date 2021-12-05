@@ -1,0 +1,165 @@
+body{
+    font-family: Helvetica, Arial, sans-serif;
+    color: ivory;
+    background-color: black;
+}
+
+body a{
+    color: #a8b4c1;
+}
+
+.main{
+    padding-top: 30px;
+    background-color: black;
+
+}
+
+#sobre > a{
+    color: white;
+}
+
+#sobre a:hover{
+    color: #ffa631;
+}
+
+.dadosUsuario{
+    background-color:black;
+}
+
+#fotoPerfil{
+    padding: 20px;
+    background-color: black;
+    border-radius: 20px;
+    margin-bottom: 20px;
+}
+
+#fotoPerfil img{
+    max-width: 100%;
+    border-radius: 20px;
+    border:5px solid white
+}
+
+#sobre{
+    color: white;
+    background-color: black;
+    padding: 20px;
+    border-radius: 20px;
+    min-height:100%;
+    margin-bottom: 20px;
+}
+
+#sobre a{
+    display: block;
+    text-decoration: none;
+    margin-bottom: 5px;
+}
+
+#sobre .nome{
+    font-size: 2.0em;
+    font-weight: bold;
+}
+
+
+
+#sobre .login{
+    color: #5e6975;
+}
+
+
+/*#sobre .redesSociais{
+    font-weight:bold;
+    font-size:2em;
+    margin-top: 30px;
+}*/
+
+/*#sobre .redesSociais a{
+    display: inline;
+    margin-right: 20px;
+}*/
+
+#reps{
+    color: white;
+    font-size: 2.5em;
+    background-color: black;
+}
+
+#repositorios{
+    background-color: black;
+    padding: 30px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    border-radius: 30px;
+}
+
+#repositorios .reposBox{
+    background-color: rgb(241, 236, 213);
+    margin-top: 30px;
+    padding: 20px;
+    border-radius: 15px;
+}
+
+#repositorios .reposBox a{
+    text-decoration: none;
+    font-size: 2em;
+    font-weight: 600;
+    color: black;
+}
+
+#repositorios .reposBox a:hover{
+    color: #ffa631;
+}
+
+#repositorios .reposBox p{
+    color: black;
+}
+
+#search{
+    background-color: black;
+    padding: 30px;
+    margin-bottom: 30px;
+}
+
+.container{
+    max-width: 100%;
+}
+
+#search > p{
+    color: white;
+    font-size: 2.5em;
+}
+
+#searchResultados .card{
+    background-color: #ffa631;
+    padding: 10px;
+    margin-bottom: 40px;
+}
+
+#searchResultados .card img{
+    border-radius: 10px;
+}
+
+#searchResultados .card-body a{
+    background-color: #aab5c4;
+    border-color: black;
+}
+
+#searchResultados .card-body a:hover{
+    background-color: #4d535b;
+}
+
+#searchResultados .card-body p>a{
+    background-color:transparent;
+    text-decoration: none;
+    
+}
+
+#searchResultados .card-body p>a:hover{
+    background-color: transparent;
+}
+
+@media screen and (max-width:448px) {
+    .header{
+        position: fixed;
+        z-index: 999;
+    }
+}
