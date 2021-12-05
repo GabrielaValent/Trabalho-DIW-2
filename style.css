@@ -8,11 +8,16 @@ body a{
     color: #a8b4c1;
 }
 
+.container{
+    max-width: 100%;
+}
+
 .main{
     padding-top: 30px;
     background-color: black;
 
 }
+/*===========================================Perfil=================================================*/
 
 #sobre > a{
     color: white;
@@ -65,18 +70,7 @@ body a{
     color: #5e6975;
 }
 
-
-/*#sobre .redesSociais{
-    font-weight:bold;
-    font-size:2em;
-    margin-top: 30px;
-}*/
-
-/*#sobre .redesSociais a{
-    display: inline;
-    margin-right: 20px;
-}*/
-
+/*===========================================Repositorios=================================================*/
 #reps{
     color: white;
     font-size: 2.5em;
@@ -113,14 +107,11 @@ body a{
     color: black;
 }
 
+/*===========================================Pesquisa=================================================*/
 #search{
     background-color: black;
     padding: 30px;
     margin-bottom: 30px;
-}
-
-.container{
-    max-width: 100%;
 }
 
 #search > p{
@@ -139,12 +130,12 @@ body a{
 }
 
 #searchResultados .card-body a{
-    background-color: #aab5c4;
+    background-color: rgb(197, 65, 197);
     border-color: black;
 }
 
 #searchResultados .card-body a:hover{
-    background-color: #4d535b;
+    background-color: rgb(241, 236, 213);
 }
 
 #searchResultados .card-body p>a{
