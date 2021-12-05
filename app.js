@@ -1,9 +1,19 @@
-var objetos;        //Objeto de teste
-var urlRepos;       //Objeto que guardará o link de api dos repositórios
-var urlFollowers;   //Objeto que guardará o link de api dos seguidores
-var objUser;        //Objeto que guardará o objeto do usuário
-var objRepos;       //Objeto que guardará o objeto dos repositórios
-var objFollowers;   //Objeto que guardará o objeto dos seguidores
+var objetos;    //Objeto de teste
+var userData;  //variável para guardar dados do usuário
+var reps;     //variável para guardar dados dos repositórios
+
+onload = () =>{
+    //requisição dos dados do usuário
+    requisicao("https://api.github.com/users/GabrielaValent", dadosUsuario);
+
+    //Pesquisa de usuários
+    searchForm.onsubmit = (evento) =>{
+        document.querySelector("#searchResultados").innerHTML = '<div class="row"></div>';
+        requisicao(`https://api.github.com/search/users?q=${searchText.value}`,sucessoSearch);
+        requisicao(`https://api.github.com/search/repositories?q=${searchText.value}`,sucessoReposSearch);
+        evento.preventDefault();
+    }
+}
 
 
 //Função de requisição
@@ -28,15 +38,15 @@ function erro() {
 
 //Função repositórios
 function repositorios() {
-    objRepos = JSON.parse(this.responseText);
-    for(i = 0; i < objRepos.length; i++){
+    reps = JSON.parse(this.responseText);
+    for(i = 0; i < reps.length; i++){
         
         document.querySelector("#repositorios .row").innerHTML += `
             <div class="col-12">
                 <div class="reposBox">
-                    <a href="${objRepos[i].html_url}" target="_blank" class="reposTitle">${objRepos[i].name}</a>
-                    <p>Data de publicação: ${objRepos[i].created_at.substring(8,10)+"/"+objRepos[i].created_at.substring(5,7)+"/"+objRepos[i].created_at.substring(0,4)}</p>
-                    <p><strong>Descrição: </strong> ${objRepos[i].description}</p>
+                    <a href="${reps[i].html_url}" target="_blank" class="reposTitle">${reps[i].name}</a>
+                    <p>Data de publicação: ${reps[i].created_at.substring(8,10)+"/"+reps[i].created_at.substring(5,7)+"/"+reps[i].created_at.substring(0,4)}</p>
+                    <p><strong>Descrição: </strong> ${reps[i].description}</p>
                 </div>
             </div>`;
     }
@@ -46,18 +56,17 @@ function repositorios() {
 
 //Função dados do usuário
 function dadosUsuario() {
-    objUser = JSON.parse(this.responseText);
-    /*request(objUser.followers_url,sucessoFollowers);*/
-    requisicao(objUser.repos_url,repositorios);
+    userData = JSON.parse(this.responseText);
+    requisicao(userData.repos_url,repositorios);
 
     fotoPerfil.innerHTML +=`
-        <a href="${objUser.html_url}" target="_blank"><img src="${objUser.avatar_url}" alt="Foto de ${objUser.login}"></a>
+        <a href="${userData.html_url}" target="_blank"><img src="${userData.avatar_url}" alt="Foto de ${userData.login}"></a>
     `;
 
     sobre.insertAdjacentHTML("afterBegin",`
-        <a href="${objUser.html_url}" target="_blank" class="nome">${objUser.name}</a>
-        <a href="${objUser.html_url}" target="_blank" class="login">@${objUser.login}</a>
-        <p class="bio">${objUser.bio}</p>
+        <a href="${userData.html_url}" target="_blank" class="nome">${userData.name}</a>
+        <a href="${userData.html_url}" target="_blank" class="login">@${userData.login}</a>
+        <p class="bio">${userData.bio}</p>
     `);
 }
 
@@ -101,15 +110,3 @@ function sucessoSearch() {
     }
 }
 
-onload = () =>{
-    //requisição dos dados do usuário
-    requisicao("https://api.github.com/users/GabrielaValent", dadosUsuario);
-
-    //Pesquisa de usuários
-    searchForm.onsubmit = (evento) =>{
-        document.querySelector("#searchResultados").innerHTML = '<div class="row"></div>';
-        requisicao(`https://api.github.com/search/users?q=${searchText.value}`,sucessoSearch);
-        requisicao(`https://api.github.com/search/repositories?q=${searchText.value}`,sucessoReposSearch);
-        evento.preventDefault();
-    }
-}
